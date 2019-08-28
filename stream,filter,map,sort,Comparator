@@ -1,0 +1,70 @@
+package CollectionsStreamLamda;
+
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Application {
+    public static void main(String[] args) {
+        List<Student> stds=new ArrayList<>();
+        stds.addAll(Student.getStudent());
+
+        for(Student s:stds){
+            System.out.println(s);
+        }
+        System.out.println("\n\n\n");
+        for(Student s:stds){
+            if(s.getName().length()<=6)
+            System.out.println(s);
+        }
+
+//        stds =stds.stream().filter(s->s.getName().length()<=6).collect(Collectors.toList());
+        List<Student> stds1=stds.stream().filter(s->s.getName().length()<7).collect(Collectors.toList());
+        System.out.println("\n\n\n");
+        for(Student s:stds1){
+            if(s.getName().length()<=6)
+                System.out.println(s);
+        }
+
+
+        List<Student> stds2=stds.stream().filter(s->s.getName().length()<7).collect(Collectors.toList());
+        System.out.println("\n\n\n");
+        for(Student s:stds2){
+            if(s.getName().length()<=6)
+                System.out.println(s);
+        }
+
+
+        System.out.println("\n\n");
+        List<Student> stds3=stds.stream().map(s->new Student("Dr. "+s.getName(),s.getId())).collect(Collectors.toList());
+        stds3.forEach(s-> System.out.println(s));
+
+        System.out.println("\n\n");
+        Student stds4= Student.getStudent().stream().max(Comparator.comparing(s->s.getId())).get();
+        System.out.println(stds4);
+
+        System.out.println("\n\n");
+        Student std5=stds.stream().min(Comparator.comparing(s->s.getId())).get();
+        System.out.println(std5);
+
+        System.out.println("\n\n");
+        long count=stds.stream().count();
+        System.out.println(count);
+
+        System.out.println("\n\nbefore sorting");
+        System.out.println(stds);
+        System.out.println("after sorting");
+        List<Student> stds6=stds.stream().sorted(Comparator.comparing(Student::getId)).collect(Collectors.toList());
+        System.out.println(stds6);
+
+        //by making a comparator
+        System.out.println("\n\nbefore sorting");
+        System.out.println(stds);
+        System.out.println("after sorting");
+        Comparator<Student> comStd=(s1,s2)->s1.getId()>s2.getId()?1:s1.getId()<s2.getId()?-1:0 ;
+        List<Student> stds7=new ArrayList<>(stds);
+        Collections.sort(stds7,comStd);
+        System.out.println(stds7);
+    }
+}
