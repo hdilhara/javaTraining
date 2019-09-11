@@ -1,5 +1,7 @@
 package com.thilina.springdatajpaexample.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,8 +13,9 @@ public class Telephone {
     String number;
 
     @ManyToOne
-            @JoinColumn
-    Student std;
+    @JoinColumn
+    @JsonIgnore
+    Student student;
 
     public Integer getTid() {
         return tid;
@@ -28,5 +31,13 @@ public class Telephone {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }

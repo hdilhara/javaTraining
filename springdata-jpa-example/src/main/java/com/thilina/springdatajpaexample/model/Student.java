@@ -14,10 +14,16 @@ public class Student {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Address address;
+    Address address ;
 
-    @OneToMany(mappedBy = "std")
-    private List<Telephone> telephone;
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL)
+    List<Telephone> telephones;
+
+    @ManyToMany
+    @JoinTable(name = "student_projects",
+            joinColumns = @JoinColumn(name = "sid",referencedColumnName = "sid"),
+            inverseJoinColumns = @JoinColumn(name = "pid",referencedColumnName = "pid"))
+    List<Project> projects;
 
     public Integer getSid() {
         return sid;
@@ -33,5 +39,29 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Telephone> getTelephones() {
+        return telephones;
+    }
+
+    public void setTelephones(List<Telephone> telephones) {
+        this.telephones = telephones;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 }
