@@ -1,13 +1,13 @@
-package com.oauth2ex.oauth2DEMO;
+package com.thilina.authServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Oauth2DemoApplication {
+public class AuthServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Oauth2DemoApplication.class, args);
+		SpringApplication.run(AuthServerApplication.class, args);
 	}
 
 }

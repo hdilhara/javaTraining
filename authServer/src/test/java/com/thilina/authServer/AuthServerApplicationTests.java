@@ -1,4 +1,4 @@
-package com.oauth2ex.oauth2DEMO;
+package com.thilina.authServer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Oauth2DemoApplicationTests {
+public class AuthServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
