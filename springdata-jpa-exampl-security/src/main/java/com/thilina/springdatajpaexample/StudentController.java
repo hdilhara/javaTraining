@@ -23,7 +23,7 @@ public class StudentController {
         return "hello Springboot";
     }
 
-//    @RequestMapping(value="/students",method = RequestMethod.GET)
+//    @RequestMapping(value="/student",method = RequestMethod.GET)
 //    public Student getStudent(){
 //        Student student=new Student();
 //        student.setName("Thilina");
