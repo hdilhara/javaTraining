@@ -1,5 +1,4 @@
-package com.auth.authserver.conf;
-
+package com.thilina.authServer.conf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +14,6 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 public class AuthServerConfiguration extends WebSecurityConfigurerAdapter implements AuthorizationServerConfigurer {
 
-    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -25,18 +22,26 @@ public class AuthServerConfiguration extends WebSecurityConfigurerAdapter implem
     @Autowired
     AuthenticationManager authenticationManager;
 
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+
         security.checkTokenAccess("permitAll()");
+
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer client) throws Exception {
-        client.inMemory().withClient("web").secret(passwordEncoder.encode("webpass")).scopes("READ","WRITE").authorizedGrantTypes("password","authorization_code");
+
+        client.inMemory().withClient("web").secret(passwordEncoder.encode("webpass")).scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code").redirectUris("http://localhost:8090/login");
+
+
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoint) throws Exception {
         endpoint.authenticationManager(authenticationManager);
+
     }
 }
