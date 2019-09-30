@@ -17,16 +17,8 @@
     <?div>
 
 
-    <!--Login form-->
-    <form action="/login">
-    <div >
-    <table>
-    <tr><td>User Name:</td><td><input  type="text" name="uname"><br/></td></tr>
-    <tr><td>Password:</td><td><input type="password" name="upass"><br/></td></tr>
-    </table>
-    <input type="submit" class="btn btn-info">
-    </div>
-    <form>
+    <h3>You've loged in successfuly!</h3><br/>
+    <a href="/todoList">click here </a> to watch to-do List!
 
 
 

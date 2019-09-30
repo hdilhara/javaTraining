@@ -17,21 +17,6 @@
     <?div>
 
 
-    <!--Login form-->
-    <form action="/login">
-    <div >
-    <table>
-    <tr><td>User Name:</td><td><input  type="text" name="uname"><br/></td></tr>
-    <tr><td>Password:</td><td><input type="password" name="upass"><br/></td></tr>
-    </table>
-    <input type="submit" class="btn btn-info">
-    </div>
-    <form>
-
-
-
-
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
