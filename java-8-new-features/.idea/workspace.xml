@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73b0a1cc-d541-4c58-a85d-a32fa070233b" name="Default Changelist" comment="">
+    <list default="true" id="3fb8f5d4-6d24-4a56-9b34-12df61f431fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StreamAPI/StreamAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StreamAPI/StreamAPI.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1RYNUxxxoF3PCSqInzDo6hHJ0Sa" />
+  <component name="ProjectId" id="1RaZ9L1bKc038yXwkOb4jCVPS09" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -37,13 +36,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JavaDate">
-    <configuration name="JavaDate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaDate.JavaDate" />
+  <component name="RunManager" selected="Application.PassByValue">
+    <configuration name="PassByValue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaPassByValue.PassByValue" />
       <module name="java-8-new-features" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="JavaDate.*" />
+          <option name="PATTERN" value="JavaPassByValue.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -51,12 +50,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StreamAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="StreamAPI.StreamAPI" />
+    <configuration name="StringConvert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stringConvert.StringConvert" />
       <module name="java-8-new-features" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="StreamAPI.*" />
+          <option name="PATTERN" value="stringConvert.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -66,8 +65,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JavaDate" />
-        <item itemvalue="Application.StreamAPI" />
+        <item itemvalue="Application.PassByValue" />
+        <item itemvalue="Application.StringConvert" />
       </list>
     </recent_temporary>
   </component>
@@ -76,11 +75,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="73b0a1cc-d541-4c58-a85d-a32fa070233b" name="Default Changelist" comment="" />
-      <created>1569840088381</created>
+      <changelist id="3fb8f5d4-6d24-4a56-9b34-12df61f431fa" name="Default Changelist" comment="" />
+      <created>1569907014702</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1569840088381</updated>
+      <updated>1569907014702</updated>
     </task>
     <servers />
   </component>
@@ -89,7 +88,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

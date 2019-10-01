@@ -13,11 +13,10 @@
   <body>
     <div class="container">
     <h1 class="text-center jumbotron">ToDo App</h1>
-    <h3>Login here</h3>
-    <?div>
+    </div>
 
 
-    <h3>You've loged in successfuly!</h3><br/>
+    <h3>${uname} You've loged in successfuly!</h3><br/>
     <a href="/todoList">click here </a> to watch to-do List!
 
 
