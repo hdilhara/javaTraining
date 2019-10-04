@@ -36,7 +36,7 @@ public class WebSecurityConfigeration extends WebSecurityConfigurerAdapter {
         UserDetails user = User.builder().username("user").password(passwordEncoder().encode("userpass")).roles("USER").build();
 
         UserDetails userAdmin = User.builder().username("admin").password(passwordEncoder().encode("adminpass")).roles("ADMIN")
-                .build();
+                .build();                               //give multiple roles ------->>> .roles("ADMIN","USER")
         return new InMemoryUserDetailsManager(user,userAdmin);
     }
 
@@ -50,6 +50,7 @@ public class WebSecurityConfigeration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/home").permitAll()
                 .antMatchers("/webprivate/**").authenticated()//Authorize all peoples can access
                 .antMatchers("/webadmin/**").hasRole("ADMIN")//only ADMIN can access
+            //give multiple roles ----->>>.antMatchers.access("hasRole('R') or hasRole('W')")
                 .and()
                 .formLogin().loginPage("/login").permitAll()//in here we only gives .formLogin() it gives default login page
                 .and()
