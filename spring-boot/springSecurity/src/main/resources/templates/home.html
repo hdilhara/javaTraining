@@ -1,0 +1,30 @@
+<!--<! DOCTYPE html>-->
+<!--<Html xmlns: th = "http://www.thymeleaf.org"-->
+<!--      xmlns: sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">-->
+<!--<Head>-->
+<!--    <Title> Home Page </title>-->
+<!--</Head>-->
+<!--<Body>-->
+<!--<H1> Home Page </h1>-->
+<!--<P> <a th:href="@{/}"> Click here to view a page </a> public. </ P>-->
+<!--<P> If you are a regular user clicks </a> <a th:href="@{/webprivate}"> here to view a private page </ p>-->
+<!--<P> If you are a regular administrator </a> click <a th:href="@{/webadmin}"> here to see the profile Administrator </ p>-->
+<!--    <Div sec: Authorize = "isAuthenticated ()">-->
+<!--        Hello <span sec: authentication = "name"> someone </ span>-->
+<!--<P> <a th:href="@{/logout}"> Disconnect </a> </ p>-->
+<!--</ Div>-->
+<!--</ Body>-->
+<!--</ Html>-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head></head>
+<body>
+home
+<p> <a th:href="@{/}"> Click here to view a page </a> public. </p>
+<p> If you are a regular user clicks </a> <a th:href="@{/webprivate}"> here to view a private page </p>
+<p> If you are a regular administrator </a> click <a th:href="@{/webadmin}"> here to see the profile Administrator </p>
+<!--<div sec: Authorize = "isAuthenticated ()">-->
+<!--        Hello <span sec: authentication = "name"> someone </span>-->
+<!--<p> <a th:href="@{/logout}"> Disconnect </a></p>-->
+<!--</div>-->
+</body>
+</html>

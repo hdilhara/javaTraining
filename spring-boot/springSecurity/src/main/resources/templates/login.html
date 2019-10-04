@@ -1,0 +1,22 @@
+
+<!--The URL we submit our username and password to is the same URL as our login form (i.e. /login), but a POST instead of a GET.-->
+<!--When authentication fails, the browser is redirected to /login?error so we can display an error message by detecting if the parameter error is non-null.-->
+<!--When we are successfully logged out, the browser is redirected to /login?logout so we can display an logout success message by detecting if the parameter logout is non-null.-->
+<!--The username should be present on the HTTP parameter username-->
+<!--The password should be present on the HTTP parameter password-->
+<html xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+<form th:action="@{/login}" method="post">
+    <div th:if="${param.error}" class="alert alert-error">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}" class="alert alert-success">
+        You have been logged out.
+    </div>
+    <label> User Name:</label><input type="text" id="username" name="username">
+    <label> User Name:</label><input type="password" id="password" name="password">
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
