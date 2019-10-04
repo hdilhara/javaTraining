@@ -1,7 +1,18 @@
-<html>
+<!--<html xmlns:th="https://www.thymeleaf.org">-->
+<!--<head></head>-->
+<!--<body>-->
+<!--<h1>  th:text="${uname}" </h1>-->
+<!--This is web-private page-->
+<!--</body>-->
+<!--</html>-->
+<html xmlns:th="https://www.thymeleaf.org">
 <head></head>
 <body>
 
-This is web-private page
+<div>
+    <h3>You are loged in as <span th:text="${uname}"></span></h3>
+    <br/>
+    this is private page
+</div>
 </body>
 </html>
