@@ -5,6 +5,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+
+//************This config class is no need ****************//
 @EnableWebMvc
 public class WebMVCConfigeration implements WebMvcConfigurer {
 
