@@ -3,8 +3,8 @@ server:
 #spring:
 #  security:
 #    user:
-#      name: pubudu
-#      password: pubudu123
+#      name:
+#      password:
 #      roles: ADMIN,USER
 #security:
 #  oauth2:

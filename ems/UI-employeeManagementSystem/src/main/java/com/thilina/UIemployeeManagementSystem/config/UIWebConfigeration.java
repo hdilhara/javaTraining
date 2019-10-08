@@ -14,7 +14,7 @@ public class UIWebConfigeration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/home").permitAll()
+                .antMatchers("/css/**", "/","/img/**").permitAll()
                 .antMatchers("/ems/**").authenticated()
                 .anyRequest().authenticated();
     }

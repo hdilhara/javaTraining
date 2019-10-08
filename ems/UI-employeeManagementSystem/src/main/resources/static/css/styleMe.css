@@ -1,0 +1,38 @@
+.btn{
+    margin: 5px 10px;
+}
+.navbar-brand{
+    font-weight: 900;
+}
+.backImg{
+    background-image: url("./images/ems.jpg");
+  background-color: #cccccc;
+  height: 200px;
+}
+.operation{
+    border: 1PX dotted black;
+    padding: 20PX;
+}
+.navimg{
+width: 5%;
+}
+
+.logo{
+    margin: 20px;
+}
+
+.func img{
+    width: 20%;
+    padding: 25px;
+
+}
+.func{
+    padding: 25px;
+    display: inline;
+}
+.func :hover{
+    background-color: rgb(154, 154, 179);
+}
+.oper{
+    margin: 5px 0px;
+}
