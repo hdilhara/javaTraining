@@ -2,7 +2,9 @@ package com.thilina.employeeManagementSystem.controller;
 
 import com.thilina.employeeManagementSystem.dao.Employee;
 import com.thilina.employeeManagementSystem.dao.Project;
+import com.thilina.employeeManagementSystem.dao.Tasks;
 import com.thilina.employeeManagementSystem.services.EmployeeService;
+import javafx.concurrent.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -47,5 +49,19 @@ public class AppController {
     @RequestMapping(value = "/ems/projects/project",method = RequestMethod.POST)
     public void addProject(@RequestBody Project project){
         empService.addProject(project);
+    }
+    /**Task controlles*/
+    @RequestMapping("ems/tasks")
+    public List<Tasks> getAllTasks(){
+        return empService.getAllTasks();
+    }
+    @RequestMapping("ems/tasks/task/{id}")
+    public Tasks getTask(@PathVariable Integer id){
+        return empService.getTask(id).get();
+    }
+    @RequestMapping(value = "/ems/Tasks/Task",method = RequestMethod.POST)
+    public void addTask(@RequestBody Tasks tasks)
+    {
+        empService.addTask(tasks);
     }
 }

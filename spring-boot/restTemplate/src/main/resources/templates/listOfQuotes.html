@@ -1,0 +1,16 @@
+<html xmlns:th="http://thymeleaf.org">
+<head></head>
+<body>
+
+<h3>Get Data to the list</h3>
+<table>
+<tbody>
+<tr th:each="quote: ${quotes}">
+    <td th:text="${quote.type}" />
+    <td th:text="${quote.value.id}" />
+    <td th:text="${quote.value.quote}" />
+</tr>
+</tbody>
+</table>
+</body>
+</html>

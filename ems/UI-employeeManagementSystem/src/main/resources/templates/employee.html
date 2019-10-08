@@ -13,25 +13,34 @@
 </head>
 <body>
 
-<div class="container ">
+<div class="text-center">
+    <img class="logoEmp" th:src="@{img/icon.png}">
+    <!--  > -->
 
-    <div class="text-center">
-        <img class="logo" th:src="@{img/icon.png}" >
+    <div class="container">
+        <table >
+            <thead>
+            <th>ID</th><th>Name</th><th>Resignation</th><th></th>
+            </thead>
+            <tbody>
+<!--            <tr th:each="employee: ${employees}"><td th:text="${employee.id}">0052</td><td>Thilina Dilhara</td><td>ASE</td><td class="text-center"><button class="btn btn-outline-info">VIEW</button></td></tr>-->
+<!--            <tr th:each="emp: ${emp}">-->
+<!--                <td th:text="${emp.id}" />-->
+<!--                <td th:text="${emp.name} />-->
+<!--                <td th:text="${emp.resignation} />-->
+<!--            </tr>-->
+            <tr th:each="emp: ${emp}">
+                <td><span th:text="${emp.id}"></span></td>
+                <td><span th:text="${emp.name}"></span></td>
+                <td><span th:text="${emp.resignation}"></span></td>
+                <td class="text-center"><button class="btn btn-outline-info">VIEW</button></td>
+            </tr>
+
+            </tbody>
+
+        </table>
     </div>
-
-    <div class="oper">
-        <div class="func"><a th:href="@{/employee}"><img th:src="@{img/emp1.png}" ></a></div>
-        <div class="func"><a href="#"><img th:src="@{img/project.png}" ></a></div>
-        <div class="func"><a href="#"><img th:src="@{img/tasks.jpeg}" ></a></div>
-        <div class="func"><a href="#"><img th:src="@{img/opera.png}" ></a></div>
-    </div>
-
-    <div>
-
-    </div>
-
 </div>
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

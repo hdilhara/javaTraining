@@ -1,0 +1,35 @@
+DefaultHttpClient client = new DefaultHttpClient();
+    HttpHeaders headers = new HttpHeaders();
+    headers.set("Authorization","Bearer "+accessToken);
+    System.out.println(accessToken);
+    HttpEntity<String> entity = new HttpEntity<String>(headers);
+    System.out.println(restTemplate.exchange("http://localhost:8080/xxxx",HttpMethod.GET,entity,Object.class));
+
+
+@Autowired
+private TokenStore tokenStore;
+
+@RequestMapping(method = {RequestMethod.POST, RequestMethod.GET}, value = "/oauth/me")
+public Map<String, Object> userInfo(OAuth2Authentication auth){
+    final OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) auth.getDetails();
+    //token
+    String accessToken = details.getTokenValue();
+    //reference
+    final OAuth2AccessToken accessToken = tokenStore.readAccessToken(details.getTokenValue());
+   // clientid
+    String clientId = auth.getOAuth2Request().getClientId();
+}
+
+
+//exchange data
+RestTemplate restTemplate = new RestTemplate();
+HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
+ResponseEntity<Foo> response = restTemplate
+  .exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+  
+assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+  
+Foo foo = response.getBody();
+  
+assertThat(foo, notNullValue());
+assertThat(foo.getName(), is("bar"));

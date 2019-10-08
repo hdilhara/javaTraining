@@ -36,3 +36,24 @@ width: 5%;
 .oper{
     margin: 5px 0px;
 }
+   table{
+        width: 100%;
+        margin: 35px 0px;
+
+    }
+
+    table tbody tr:hover{
+        background-color: rgb(238, 238, 238);
+    }
+    table td{
+        padding: 4px;
+        font-size: 14px;
+        border: 1px solid rgb(189, 182, 182);
+    }
+    .btn{
+        font-size: 12px;
+    }
+    .logoEmp{
+        margin: 20px 0px;
+        widows: 512px;
+    }
