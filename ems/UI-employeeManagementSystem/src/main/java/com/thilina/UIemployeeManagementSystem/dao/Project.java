@@ -1,22 +1,21 @@
-package com.thilina.employeeManagementSystem.dao;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+package com.thilina.UIemployeeManagementSystem.dao;
 
 public class Project {
-
     private Integer pid;
     private String pname;
     private String tech;
     private String country;
 
-    /**default Constructor*/
     public Project() {
     }
-    /**getters and setters*/
+
+    public Project(Integer pid, String pname, String tech, String country) {
+        this.pid = pid;
+        this.pname = pname;
+        this.tech = tech;
+        this.country = country;
+    }
+
     public Integer getPid() {
         return pid;
     }
@@ -45,7 +44,7 @@ public class Project {
         return country;
     }
 
-    public void setCountry(String contry) {
-        this.country = contry;
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

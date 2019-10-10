@@ -4,7 +4,6 @@ import com.thilina.employeeManagementSystem.dao.Employee;
 import com.thilina.employeeManagementSystem.dao.Project;
 import com.thilina.employeeManagementSystem.dao.Tasks;
 import com.thilina.employeeManagementSystem.repository.EmpRepo;
-import com.thilina.employeeManagementSystem.repository.ProjectRepo;
 import com.thilina.employeeManagementSystem.repository.TasksRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +16,7 @@ import java.util.Optional;
 public class EmployeeService {
     @Autowired
     EmpRepo empRepo;
-    @Autowired
-    ProjectRepo projectRepo;
+
     @Autowired
     TasksRepo tasksRepo;
 
@@ -37,20 +35,7 @@ public class EmployeeService {
     public void addEmployee(Employee employee){
         empRepo.save(employee);
     }
-    /**Projects*/
-    public List<Project> getAllProjects(){
-        List<Project> projects=new ArrayList<>();
-        projectRepo.findAll().forEach(projects::add);
-        return projects;
-    }
 
-    public Optional<Project> getProject(Integer id){
-        Optional<Project> project=projectRepo.findById(id);
-        return project;
-    }
-    public void addProject(Project project){
-        projectRepo.save(project);
-    }
 
     /**Tasks */
     public List<Tasks> getAllTasks(){

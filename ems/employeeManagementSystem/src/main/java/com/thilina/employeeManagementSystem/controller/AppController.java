@@ -37,19 +37,7 @@ public class AppController {
         empService.addEmployee(employee);
     }
 
-    /**Project controllers*/
-    @RequestMapping("/ems/projects")
-    public List<Project> getProjects(){
-        return empService.getAllProjects();
-    }
-    @RequestMapping("/ems/projects/project/{id}")
-    public Project getProject(@PathVariable Integer id){
-        return empService.getProject(id).get();
-    }
-    @RequestMapping(value = "/ems/projects/project",method = RequestMethod.POST)
-    public void addProject(@RequestBody Project project){
-        empService.addProject(project);
-    }
+
     /**Task controlles*/
     @RequestMapping("ems/tasks")
     public List<Tasks> getAllTasks(){

@@ -1,7 +1,9 @@
 package com.thilina.UIemployeeManagementSystem.controller;
 
+import com.sun.deploy.net.HttpResponse;
 import com.thilina.UIemployeeManagementSystem.config.GetToken;
 import com.thilina.UIemployeeManagementSystem.dao.Employee;
+import com.thilina.UIemployeeManagementSystem.dao.Project;
 import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -56,10 +58,6 @@ public class UIController {
         List<Employee> employees=response.getBody();
 
         model.addAttribute("emp",employees);
-
-
-
-
         return "employee";
     }
 
@@ -95,16 +93,31 @@ public class UIController {
         ResponseEntity<Employee> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/"+id,HttpMethod.GET,request,Employee.class);
         Employee employee=response.getBody();
         model.addAttribute("emp",employee);
-
         return "empView";
-
-
     }
 
     @RequestMapping("/projects")
-    public String getProjectPage(){
+    public String getProjectPage(Model model){
+        HttpHeaders header=new HttpHeaders();
+        String token=GetToken.getToken();
+        header.add("Authorization","bearer"+token);
+        RestTemplate restTemplate=new RestTemplate();
+        HttpEntity<String > request=new HttpEntity<>(header);
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8383/ems/projects", HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
+        });
+        List<Project> projects=response.getBody();
+        model.addAttribute("projects",projects);
         return "projects";
     }
+//    @GetMapping("/projects/project/{id}")
+//    public String getProject(@PathVariable Integer id, Model model){
+//        RestTemplate restTemplate=new RestTemplate();
+//        HttpHeaders header=new HttpHeaders();
+//        String token=GetToken.getToken();
+//        header.add("Authorization","bearer"+token);
+//
+//    }
+//
     @RequestMapping("/tasks")
     public String getTaskPage(){
         return "tasks";

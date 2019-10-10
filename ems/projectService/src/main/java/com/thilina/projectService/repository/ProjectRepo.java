@@ -1,7 +1,8 @@
-package com.thilina.employeeManagementSystem.repository;
+package com.thilina.projectService.repository;
 
-import com.thilina.employeeManagementSystem.dao.Project;
+import com.thilina.projectService.dao.Project;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProjectRepo extends CrudRepository<Project,Integer> {
+
 }

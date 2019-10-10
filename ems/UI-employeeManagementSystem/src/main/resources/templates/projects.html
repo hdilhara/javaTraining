@@ -26,24 +26,26 @@
     </a>
 
 
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <th>ID</th>-->
-<!--        <th>Name</th>-->
-<!--        <th>Resignation</th>-->
-<!--        <th></th>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="emp: ${emp}">-->
-<!--            <td><span th:text="${emp.id}"></span></td>-->
-<!--            <td><span th:text="${emp.name}"></span></td>-->
-<!--            <td><span th:text="${emp.resignation}"></span></td>-->
-<!--            <td class="text-center">-->
-<!--                <button class="btn btn-outline-info">VIEW</button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
+    <table>
+        <thead>
+        <th>ID</th>
+        <th>Project Name</th>
+        <th>Country</th>
+        <th>Technology</th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr th:each="pro: ${projects}">
+            <td><span th:text="${pro.pid}"></span></td>
+            <td><span th:text="${pro.pname}"></span></td>
+            <td><span th:text="${pro.tech}"></span></td>
+            <td><span th:text="${pro.country}"></span></td>
+            <td class="text-center">
+                <button class="btn btn-outline-info">VIEW</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 
 </div>
