@@ -1,0 +1,11 @@
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI/UX create','create UI in React ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('Login page create','create  in Oauth2  ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI/UX create','create UI in React ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('Login page create','create  in Oauth2  ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');
+insert into tasks (tname,tdesd,tdate) values('UI create','create UI in Angular 8 ....','2019-11-04');

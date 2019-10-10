@@ -14,11 +14,11 @@
 <body>
 
 <div class="text-center">
-    <a th:href="@{/employee}"> <button type="button" class="btn btn-outline-dark" style="float:right; margin:25px;">Go Back</button></button></a>
+    <a th:href="@{/projects}"> <button type="button" class="btn btn-outline-dark" style="float:right; margin:25px;">Go Back</button></button></a>
 </div>
 <div class="container">
 
-<!--    <span th:text="${emp.name}"></span>-->
+    <!--    <span th:text="${emp.name}"></span>-->
 
 
 
@@ -27,13 +27,14 @@
         <div class="col-sm-3"></div>
         <div class="empDetails col-sm-6 ">
             <div class=" text-center"><img class=" logoEmp" th:src="@{/img/emp.png}">
-                <h3><span class="badge badge-pill badge-dark">EMPLOYEE DETAILS</span></h3>
+                <h3><span class="badge badge-pill badge-dark">PROJECT DETAILS</span></h3>
             </div>
 
             <table id="empD">
-                <tr><td>ID</td><td><span th:text="${emp.id}"></span></td><td></td><td></td></tr>
-                <tr><td>NAME</td><td><span th:text="${emp.name}"></span></td><td></td><td></td></tr>
-                <tr><td>DESIGNATION</td><td><span th:text="${emp.resignation}"></span></td><td></td><td></td></tr>
+                <tr><td>ID</td><td><span th:text="${project.pid}"></span></td><td></td><td></td></tr>
+                <tr><td>NAME</td><td><span th:text="${project.pname}"></span></td><td></td><td></td></tr>
+                <tr><td>COUNTRY</td><td><span th:text="${project.country}"></span></td><td></td><td></td></tr>
+                <tr><td>TECHNOLOGY</td><td><span th:text="${project.tech}"></span></td><td></td><td></td></tr>
             </table>
 
 
@@ -48,9 +49,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLongTitle">
-                                PROJECTS & TASKS
-                            </h5>    @RequestMapping(value = "/project",method = RequestMethod.POST)
-
+                                TASKS
+                            </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -83,12 +83,12 @@
 
 
 
-<!--    <input id="myInput" type="text" value="Swag" />-->
+    <!--    <input id="myInput" type="text" value="Swag" />-->
 
-<!--    <script>-->
-<!--    var test = "test";-->
-<!--    document.getElementById("myInput").value = test;-->
-<!--</script>-->
+    <!--    <script>-->
+    <!--    var test = "test";-->
+    <!--    document.getElementById("myInput").value = test;-->
+    <!--</script>-->
 
 
 </div>

@@ -21,9 +21,65 @@
         <h3><span class="badge badge-pill badge-dark">PROJECT</span></h3>
     </div>
 
-    <a href="#">
-        <button type="button" class="addEmp btn btn-outline-primary">Add Project</button>
-    </a>
+<!--    <a href="#">-->
+<!--        <button type="button" class="addEmp btn btn-outline-primary">Add Project</button>-->
+<!--    </a>-->
+
+    <!-- Button trigger modal -->
+    <button type="button" class="addEmp btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">
+       ADD PROJECT
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        ADD Employee
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--*************start the body******************-->
+                    <form th:action="@{/projects/project}" method="POST">
+                        <div class="form-group">
+                            <label for="pname">Project Name</label>
+                            <input type="text" class="form-control" id="pname" name="pname" required="required" placeholder="Enter project name">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" id="country" name="country" required="required"  placeholder="Enter the Country">
+                        </div>
+                        <div class="form-group">
+                            <label for="tech">Technology</label>
+                            <input type="text" class="form-control" id="tech" name="tech" required="required"  placeholder="Enter the Country">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+
+                    <!-- end of the body -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************-->
+
+
+
+
+
+
+
 
 
     <table>
@@ -41,7 +97,7 @@
             <td><span th:text="${pro.tech}"></span></td>
             <td><span th:text="${pro.country}"></span></td>
             <td class="text-center">
-                <button class="btn btn-outline-info">VIEW</button>
+                <a th:href="@{/projects/project/{id}(id=${pro.pid})}"><button class="btn btn-outline-info">VIEW</button></a>
             </td>
         </tr>
         </tbody>

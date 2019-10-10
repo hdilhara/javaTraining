@@ -71,7 +71,7 @@ public class UIController {
         header.set("Authorization", "bearer"+token);
 
         RestTemplate restTemplate=new RestTemplate();
-
+/**we need pass the mapping here also**/
         HashMap<String, String> mapVal= new HashMap<>();
         mapVal.put("name",employee.getName());
         mapVal.put("resignation",employee.getResignation());
@@ -89,7 +89,7 @@ public class UIController {
         String token=GetToken.getToken();
         headers.add("Authorization","bearer"+token);
         HttpEntity<Employee> request=new HttpEntity<>(headers);
-
+                /**in here we dont get any response back - so we put here response type as String.class**/
         ResponseEntity<Employee> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/"+id,HttpMethod.GET,request,Employee.class);
         Employee employee=response.getBody();
         model.addAttribute("emp",employee);
@@ -109,19 +109,56 @@ public class UIController {
         model.addAttribute("projects",projects);
         return "projects";
     }
-//    @GetMapping("/projects/project/{id}")
-//    public String getProject(@PathVariable Integer id, Model model){
-//        RestTemplate restTemplate=new RestTemplate();
-//        HttpHeaders header=new HttpHeaders();
-//        String token=GetToken.getToken();
-//        header.add("Authorization","bearer"+token);
-//
-//    }
-//
-    @RequestMapping("/tasks")
-    public String getTaskPage(){
-        return "tasks";
+
+    @GetMapping("/projects/project/{id}")
+    public String getProject(@PathVariable Integer id, Model model){
+        RestTemplate restTemplate=new RestTemplate();
+        HttpHeaders header=new HttpHeaders();
+        String token=GetToken.getToken();
+        header.add("Authorization","bearer"+token);
+        HttpEntity<String> request=new HttpEntity<>(header);
+        ResponseEntity<Project> response=restTemplate.exchange("http://localhost:8383/ems/projects/project/"+id,HttpMethod.GET,request,Project.class);
+        Project project=response.getBody();
+        model.addAttribute("project",project);
+
+        return "proView";
+
     }
 
+    @RequestMapping(value ="/projects/project",method = RequestMethod.POST)
+    public String addProject(@ModelAttribute Project project){
+        RestTemplate restTemplate=new RestTemplate();
+        HttpHeaders header=new HttpHeaders();
+        String token=GetToken.getToken();
+        header.add("Authorization","bearer"+token);
+        HashMap<String,String> mapVal=new HashMap<>();
+        mapVal.put("pname",project.getPname());
+        mapVal.put("country",project.getCountry());
+        mapVal.put("tech",project.getTech());
+        HttpEntity<HashMap<String,String>> request=new HttpEntity<>(mapVal,header);
+        restTemplate.postForEntity("http://localhost:8383/ems/projects/project",request,String.class);
+
+        return "redirect:/projects";
+
+    }
+
+    @RequestMapping("/tasks")
+    public String getTaskPage(Model model){
+        HttpHeaders header=new HttpHeaders();
+        String token=GetToken.getToken();
+        header.add("Authorization","bearer"+token);
+        HttpEntity<String> request=new HttpEntity<>(header);
+        RestTemplate restTemplate=new RestTemplate();
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8383/ems/projects",HttpMethod.GET,request,new ParameterizedTypeReference<List<Project>>(){});
+        List<Project> projects=response.getBody();
+        model.addAttribute("projects",projects);
+
+        return "tasks";
+    }
+    /**UI controllers for tasks*/
+//    @RequestMapping("/tasks")
+//    public String getTasks(){
+//        HttpEntity<>
+//    }
 
 }

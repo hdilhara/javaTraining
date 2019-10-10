@@ -1,4 +1,4 @@
-package com.thilina.employeeManagementSystem.dao;
+package com.thilina.taskService.dao;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,14 +11,19 @@ public class Tasks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tid;
     private String tname;
-    private String date;
-    private Integer pid;
+    private String tdesd;
+    private String tdate;
 
-    /**default constuctor*/
     public Tasks() {
     }
 
-    /**getters and setters**/
+    public Tasks(Integer tid, String tname, String tdesd, String tdate) {
+        this.tid = tid;
+        this.tname = tname;
+        this.tdesd = tdesd;
+        this.tdate = tdate;
+    }
+
     public Integer getTid() {
         return tid;
     }
@@ -35,19 +40,20 @@ public class Tasks {
         this.tname = tname;
     }
 
-    public String getDate() {
-        return date;
+    public String getTdesd() {
+        return tdesd;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTdesd(String tdesd) {
+        this.tdesd = tdesd;
     }
 
-    public Integer getPid() {
-        return pid;
+    public String getTdate() {
+        return tdate;
     }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
+    public void setTdate(String tdate) {
+        this.tdate = tdate;
     }
 }
+

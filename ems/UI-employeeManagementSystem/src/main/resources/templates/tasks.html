@@ -24,7 +24,49 @@
     <a href="#">
         <button type="button" class="addEmp btn btn-outline-primary">Add Task</button>
     </a>
+</div>
 
+
+<div class="container">
+    <!-- Example single danger button -->
+    <div class="btn-group ">
+        <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SELECT PROJECT
+        </button>
+        <div class="dropdown-menu">
+            <div th:each="pro: ${projects}"><a class="dropdown-item" href="#"><span th:text="${pro.pname}"></span></a></div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" th:href="/projects">Go to Projects</a>
+        </div>
+    </div>
+<!--            end of burron group-->
+
+
+    <table>
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Designation</th>
+        <th></th>
+        </thead>
+        <tbody>
+        <!--            <tr th:each="employee: ${employees}"><td th:text="${employee.id}">0052</td><td>Thilina Dilhara</td><td>ASE</td><td class="text-center"><button class="btn btn-outline-info">VIEW</button></td></tr>-->
+        <!--            <tr th:each="emp: ${emp}">-->
+        <!--                <td th:text="${emp.id}" />-->
+        <!--                <td th:text="${emp.name} />-->
+        <!--                <td th:text="${emp.resignation} />-->
+        <!--            </tr>-->
+        <tr th:each="emp: ${emp}">
+            <td><span th:text="${emp.id}"></span></td>
+            <td><span th:text="${emp.name}"></span></td>
+            <td><span th:text="${emp.resignation}"></span></td>
+            <td class="text-center">
+                <a th:href="@{/employee/view/{id}(id=${emp.id})}"><button class="btn btn-outline-info">VIEW</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
     <!--    <table>-->
     <!--        <thead>-->
@@ -46,7 +88,7 @@
     <!--    </table>-->
 
 
-</div>
+
 
 
 <!-- Optional JavaScript -->
