@@ -5,6 +5,7 @@ import com.thilina.UIemployeeManagementSystem.config.GetToken;
 import com.thilina.UIemployeeManagementSystem.dao.Employee;
 import com.thilina.UIemployeeManagementSystem.dao.Project;
 
+import com.thilina.UIemployeeManagementSystem.dao.Tasks;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -143,6 +144,16 @@ public class UIController {
     /*Controller for Tasks*/
     @RequestMapping("/tasks")
     public String getTasksPage(Model model){
+
+        HttpHeaders headers =new HttpHeaders();
+        headers.add("Authorization","bearer"+GetToken.getToken());
+        HttpEntity<String> request=new HttpEntity<>(headers);
+
+        RestTemplate restTemplate=new RestTemplate();
+        ResponseEntity<List<Tasks>> response=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, request, new ParameterizedTypeReference<List<Tasks>>() {
+        });
+        List<Tasks> tasks=response.getBody();
+        model.addAttribute("tasks",tasks);
         return "tasks";
     }
 

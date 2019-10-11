@@ -1,16 +1,6 @@
-package com.thilina.taskService.dao;
+package com.thilina.UIemployeeManagementSystem.dao;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Tasks {
-
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer tid;
     private String tname;
     private String tdesc;

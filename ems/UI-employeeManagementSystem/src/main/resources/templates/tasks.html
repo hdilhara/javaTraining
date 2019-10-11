@@ -23,11 +23,12 @@
 
 </div>
 
-
+<div class="container">
 <table>
     <thead>
     <th>ID</th>
     <th>Task Name</th>
+    <th>Task Description</th>
     <th>Due Date</th>
     <th></th>
     </thead>
@@ -41,15 +42,16 @@
     <tr th:each="task: ${tasks}">
         <td><span th:text="${task.tid}"></span></td>
         <td><span th:text="${task.tname}"></span></td>
+        <td><span th:text="${task.tdesc}"></span></td>
         <td><span th:text="${task.tdate}"></span></td>
         <td class="text-center">
-            <a th:href="@{/employee/view/{id}(id=${emp.id})}"><button class="btn btn-outline-danger">DELETE</button></a>
+            <a href="#"><button class="btn btn-outline-danger">DELETE</button></a>
         </td>
     </tr>
     </tbody>
 </table>
 
-
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
