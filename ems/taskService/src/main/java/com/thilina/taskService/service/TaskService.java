@@ -19,4 +19,8 @@ public class TaskService {
         taskRepo.findAll().forEach(i->tasks.add(i));
         return tasks;
     }
+
+    public void addTask(Tasks task){
+        taskRepo.save(task);
+    }
 }

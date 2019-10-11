@@ -4,8 +4,7 @@ import com.thilina.taskService.dao.Tasks;
 import com.thilina.taskService.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,10 +12,14 @@ import java.util.List;
 public class TaskController {
 
     @Autowired
-    public TaskService taskService;
+TaskService taskService;
 
     @RequestMapping("/ems/tasks")
     public List<Tasks> getAllTasks(){
         return taskService.getAllTasks();
+    }
+    @RequestMapping(value ="/ems/tasks/task",method = RequestMethod.POST)
+    public void addTask(@RequestBody Tasks task){
+        taskService.addTask(task);
     }
 }

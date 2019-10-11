@@ -157,4 +157,18 @@ public class UIController {
         return "tasks";
     }
 
+    @RequestMapping(value = "/tasks",method = RequestMethod.POST)
+    public String addTask(@ModelAttribute Tasks tasks){
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer "+GetToken.getToken());
+        HashMap<String,String> mapVal=new HashMap<>();
+        mapVal.put("tname",tasks.getTname());
+        mapVal.put("tdesc",tasks.getTdesc());
+        mapVal.put("tdate",tasks.getTdate());
+        HttpEntity<HashMap<String,String>> request=new HttpEntity<>(mapVal,header);
+        RestTemplate restTemplate=new RestTemplate();
+        restTemplate.postForEntity("http://localhost:8484/ems/tasks/task",request,String.class);
+
+        return "redirect: /tasks";
+    }
 }

@@ -19,12 +19,6 @@ public class Tasks {
     public Tasks() {
     }
 
-    public Tasks(Integer tid, String tname, String tdesc, String tdate) {
-        this.tid = tid;
-        this.tname = tname;
-        this.tdesc = tdesc;
-        this.tdate = tdate;
-    }
 
     public Integer getTid() {
         return tid;
