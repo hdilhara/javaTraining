@@ -4,9 +4,7 @@ import com.sun.deploy.net.HttpResponse;
 import com.thilina.UIemployeeManagementSystem.config.GetToken;
 import com.thilina.UIemployeeManagementSystem.dao.Employee;
 import com.thilina.UIemployeeManagementSystem.dao.Project;
-import org.bouncycastle.math.raw.Mod;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -142,23 +140,10 @@ public class UIController {
 
     }
 
+    /*Controller for Tasks*/
     @RequestMapping("/tasks")
-    public String getTaskPage(Model model){
-        HttpHeaders header=new HttpHeaders();
-        String token=GetToken.getToken();
-        header.add("Authorization","bearer"+token);
-        HttpEntity<String> request=new HttpEntity<>(header);
-        RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8383/ems/projects",HttpMethod.GET,request,new ParameterizedTypeReference<List<Project>>(){});
-        List<Project> projects=response.getBody();
-        model.addAttribute("projects",projects);
-
+    public String getTasksPage(Model model){
         return "tasks";
     }
-    /**UI controllers for tasks*/
-//    @RequestMapping("/tasks")
-//    public String getTasks(){
-//        HttpEntity<>
-//    }
 
 }

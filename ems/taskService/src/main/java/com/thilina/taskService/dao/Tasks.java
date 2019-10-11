@@ -1,5 +1,6 @@
 package com.thilina.taskService.dao;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,21 +8,22 @@ import javax.persistence.Id;
 
 @Entity
 public class Tasks {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer tid;
     private String tname;
-    private String tdesd;
-    private String tdate;
+    private String desc;
+    private String date;
 
     public Tasks() {
     }
 
-    public Tasks(Integer tid, String tname, String tdesd, String tdate) {
+    public Tasks(Integer tid, String tname, String desc, String date) {
         this.tid = tid;
         this.tname = tname;
-        this.tdesd = tdesd;
-        this.tdate = tdate;
+        this.desc = desc;
+        this.date = date;
     }
 
     public Integer getTid() {
@@ -40,20 +42,19 @@ public class Tasks {
         this.tname = tname;
     }
 
-    public String getTdesd() {
-        return tdesd;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setTdesd(String tdesd) {
-        this.tdesd = tdesd;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getTdate() {
-        return tdate;
+    public String getDate() {
+        return date;
     }
 
-    public void setTdate(String tdate) {
-        this.tdate = tdate;
+    public void setDate(String date) {
+        this.date = date;
     }
 }
-
