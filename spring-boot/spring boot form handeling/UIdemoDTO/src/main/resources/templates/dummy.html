@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+<form th:action="@{/dummyForm}">
+    <input type="text" name="name">
+    <input type="date" name="ddate"><br>
+    <div th:each="cbox: ${cboxVals}">
+        <span th:text="${cbox}"></span><input type="checkbox" name="choices" th:value="${cbox}">
+    </div>
+    <select name="dropDown">
+        <option th:value="dgdfsdfds">ghgfh</option>
+        <option th:value="dgtytyhttdfsdfds">ghgh</option>
+        <option th:value="dgdfdfsdfdsfdf">ghfghfg</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

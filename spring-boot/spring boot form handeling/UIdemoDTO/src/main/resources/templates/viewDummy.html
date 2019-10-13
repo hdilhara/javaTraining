@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head></head>
+<body>
+
+<div th:each="d: ${d1}">
+    <span th:text="${d.name}"></span><br>
+    <span th:text="${d.ddate}"></span><br>
+</div>
+
+</body>
+</html>

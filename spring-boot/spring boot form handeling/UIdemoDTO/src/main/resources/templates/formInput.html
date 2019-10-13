@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+<form th:action="@{/saveGetDate}">
+    Enter date:
+    <input type="date" name="tdate">
+    <br>
+    select choices
+    <select name="choices">
+        <option name="choices" th:each="x: ${choices}" th:value="${x}" th:text="${x}"></option>
+    </select><br>
+    what you want<br>
+    bag<input type="checkbox" name="want" value="bag"><br>
+    water bottel<input type="checkbox" name="want" value="Water bottel"><br>
+    Jercy<input type="checkbox" name="want" value="Jercy"><br>
+    Jacket<input type="checkbox" name="want" value="Jacket"><br>
+    <button type="submit"> Submit</button>
+</form>
+
+</body>
+</html>

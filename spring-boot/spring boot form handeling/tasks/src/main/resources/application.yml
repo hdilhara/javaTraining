@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ems?createDatabaseIfNotExist=true
+    username: root
+    password: virtusa@1234
+    driver-class-name: com.mysql.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create
+  application:
+    name: profile
+server:
+  port: 8484
