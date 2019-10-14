@@ -1,10 +1,7 @@
 package com.thilina.employeeManagementSystem.controller;
 
-import com.thilina.employeeManagementSystem.dao.EidPid;
-import com.thilina.employeeManagementSystem.dao.Employee;
-import com.thilina.employeeManagementSystem.dao.Project;
+import com.thilina.employeeManagementSystem.dao.*;
 
-import com.thilina.employeeManagementSystem.dao.Task;
 import com.thilina.employeeManagementSystem.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,6 +44,11 @@ public class AppController {
         return empService.getEmployeeProjectsTasks(eidPid);
     }
 
+    /**Add EPT mappings**/
+    @RequestMapping(value = "/ems/ept/map",method = RequestMethod.POST)
+    public void addEPTmap(@RequestBody EPTmapping epTmapping){
+        empService.saveEPT(epTmapping);
+    }
 
 
 }

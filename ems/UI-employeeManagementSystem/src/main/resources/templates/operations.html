@@ -23,18 +23,19 @@
     </div>
 
 
-    <form th:action="@{/operations}" method="post">
-    <select>
+    <form th:action="@{/operations/ept}" >
+    <select name="eid">
         <option th:each="emp: ${employees}" th:text="${emp.name}" th:value="${emp.id}"></option>
     </select>
-    <select>
+    <select name="pid">
         <option th:each="pro: ${projects}" th:text="${pro.pname}" th:value="${pro.pid}"></option>
     </select>
     <div th:each="task: ${tasks}">
-       <span th:text="${task.tname}"></span> <input type="checkbox" th:value="${task.tid}">
+       <span th:text="${task.tname}" ></span> <input type="checkbox" th:value="${task.tid}" name="tids">
     </div>
+        <button type="submit">Add Tasks</button>
     </form>
-    <button type="submit">Add Tasks</button>
+
 
 </div>
 

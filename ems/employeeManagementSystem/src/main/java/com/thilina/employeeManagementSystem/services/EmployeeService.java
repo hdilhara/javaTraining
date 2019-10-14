@@ -85,4 +85,8 @@ public class EmployeeService {
         tasks=response.getBody();
         return tasks;
     }
+    /**Save EPT**/
+    public void saveEPT(EPTmapping ept){
+        epTrepo.save(ept);
+    }
 }

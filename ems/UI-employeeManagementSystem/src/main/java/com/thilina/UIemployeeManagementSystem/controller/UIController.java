@@ -2,10 +2,8 @@ package com.thilina.UIemployeeManagementSystem.controller;
 
 
 import com.thilina.UIemployeeManagementSystem.config.GetToken;
-import com.thilina.UIemployeeManagementSystem.dao.Employee;
-import com.thilina.UIemployeeManagementSystem.dao.Project;
+import com.thilina.UIemployeeManagementSystem.dao.*;
 
-import com.thilina.UIemployeeManagementSystem.dao.Task;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -232,10 +230,25 @@ public class UIController {
         return "operations";
     }
 
-    @RequestMapping(value = "/operations",method = RequestMethod.POST)
-    public String executeOperation(@ModelAttribute ){
+    @RequestMapping(value = "/operations/ept")
+    public String executeOperation(@ModelAttribute EPTdto ept){
+        System.out.println(ept);
+        Integer i=ept.getTids().length;
+        EPTmapping epTmapping=new EPTmapping();
 
+        RestTemplate restTemplate=new RestTemplate();
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer "+GetToken.getToken());
 
+        for (int j=0;j<i;j++){
+            epTmapping.setEid(ept.getEid());
+            epTmapping.setPid(ept.getPid());
+            epTmapping.setTid(ept.getTids()[j]);
+
+            HttpEntity<EPTmapping> request=new HttpEntity<>(epTmapping,header);
+            restTemplate.postForEntity("http://localhost:8282/ems/ept/map",request,String.class);
+
+        }
         return "redirect:/operations";
     }
 }
