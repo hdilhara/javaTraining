@@ -4,6 +4,7 @@ import com.thilina.employeeManagementSystem.dao.*;
 
 import com.thilina.employeeManagementSystem.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,7 @@ public class AppController {
     public Employee getEmployee(@PathVariable Integer id){
         return empService.getEmployee(id).get();
     }
+
     @RequestMapping(value = "/ems/employees/employee",method = RequestMethod.POST)
     public void addEmployee(@RequestBody Employee employee){
         empService.addEmployee(employee);
