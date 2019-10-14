@@ -29,4 +29,12 @@ public class ProjectService {
     public void addProject(Project project){
         projectRepo.save(project);
     }
+
+    public List<Project> findAllByIds(List<Integer> pids){
+        List<Project> projects=new ArrayList<>();
+        for (Integer i:pids){
+            projects.add(projectRepo.findById(i).get());
+        }
+        return projects;
+    }
 }

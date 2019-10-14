@@ -5,7 +5,7 @@ import com.thilina.UIemployeeManagementSystem.config.GetToken;
 import com.thilina.UIemployeeManagementSystem.dao.Employee;
 import com.thilina.UIemployeeManagementSystem.dao.Project;
 
-import com.thilina.UIemployeeManagementSystem.dao.Tasks;
+import com.thilina.UIemployeeManagementSystem.dao.Task;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,8 +19,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import sun.management.VMOptionCompositeData;
 
 import javax.jws.WebParam;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -142,33 +144,39 @@ public class UIController {
     }
 
     /*Controller for Tasks*/
-    @RequestMapping("/tasks")
+    @GetMapping("/tasks")
     public String getTasksPage(Model model){
-
-        HttpHeaders headers =new HttpHeaders();
-        headers.add("Authorization","bearer"+GetToken.getToken());
-        HttpEntity<String> request=new HttpEntity<>(headers);
-
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer"+GetToken.getToken());
+        HttpEntity<String> request=new HttpEntity<>(header);
         RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Tasks>> response=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, request, new ParameterizedTypeReference<List<Tasks>>() {
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
         });
-        List<Tasks> tasks=response.getBody();
+        List<Task> tasks=response.getBody();
         model.addAttribute("tasks",tasks);
         return "tasks";
     }
-
     @RequestMapping(value = "/tasks",method = RequestMethod.POST)
-    public String addTask(@ModelAttribute Tasks tasks){
+    public String addTask(@ModelAttribute Task task){
         HttpHeaders header=new HttpHeaders();
-        header.add("Authorization","bearer "+GetToken.getToken());
-        HashMap<String,String> mapVal=new HashMap<>();
-        mapVal.put("tname",tasks.getTname());
-        mapVal.put("tdesc",tasks.getTdesc());
-        mapVal.put("tdate",tasks.getTdate());
-        HttpEntity<HashMap<String,String>> request=new HttpEntity<>(mapVal,header);
+        header.add("Authorization","bearer"+GetToken.getToken());
+        HttpEntity<Task> request=new HttpEntity<>(task,header);
         RestTemplate restTemplate=new RestTemplate();
-        restTemplate.postForEntity("http://localhost:8484/ems/tasks/task",request,String.class);
+        restTemplate.exchange("http://localhost:8484/ems/tasks",HttpMethod.POST,request,String.class);
+        return "redirect:/tasks";
+    }
 
-        return "redirect: /tasks";
+    @RequestMapping(value = "/employees/employee/projects/{eid}",method = RequestMethod.GET)
+    public String getEmployeeProjects(@PathVariable Integer eid, Model model){
+        List<Project> projects=new ArrayList<>();
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer"+GetToken.getToken());
+        HttpEntity<String> request=new HttpEntity<>(header);
+        RestTemplate restTemplate=new RestTemplate();
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/projects/" + eid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
+        });
+        projects=response.getBody();
+        model.addAttribute("projects",projects);
+        return "employeeProjects";
     }
 }

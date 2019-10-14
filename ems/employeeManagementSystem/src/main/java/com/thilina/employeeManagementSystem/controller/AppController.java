@@ -36,6 +36,10 @@ public class AppController {
     public void addEmployee(@RequestBody Employee employee){
         empService.addEmployee(employee);
     }
+    @RequestMapping(value = "/ems/employees/employee/projects/{eid}",method = RequestMethod.GET)
+    public List<Project> getEmployeeProjects(@PathVariable Integer eid) {
+        return empService.getEmployeeProjects(eid);
+    }
 
 
 

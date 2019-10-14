@@ -1,15 +1,23 @@
 package com.thilina.UIemployeeManagementSystem.dao;
 
-public class Tasks {
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
+public class Task {
+
     private Integer tid;
     private String tname;
     private String tdesc;
-    private String tdate;
 
-    public Tasks() {
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate tdate;
+
+
+    public Task() {
     }
 
-    public Tasks(Integer tid, String tname, String tdesc, String tdate) {
+    public Task(Integer tid, String tname, String tdesc, LocalDate tdate) {
         this.tid = tid;
         this.tname = tname;
         this.tdesc = tdesc;
@@ -40,11 +48,11 @@ public class Tasks {
         this.tdesc = tdesc;
     }
 
-    public String getTdate() {
+    public LocalDate getTdate() {
         return tdate;
     }
 
-    public void setTdate(String tdate) {
+    public void setTdate(LocalDate tdate) {
         this.tdate = tdate;
     }
 }

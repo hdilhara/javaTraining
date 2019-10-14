@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -32,4 +33,15 @@ public class ProjectController {
     public void addProject(@RequestBody Project project){
         projectService.addProject(project);
     }
+
+    @RequestMapping(value = "/ems/projects/findAllBypid",method = RequestMethod.POST)
+    public List<Project> findAllbyPid(@RequestBody List<Integer> pids){
+        System.out.println(pids);
+        return projectService.findAllByIds(pids);
+    }
+//    @RequestMapping("/ems/pids")
+//    public List<Integer> getPids(){
+//        List<Integer> pids= Arrays.asList(1,5,4,7);
+//        return pids;
+//    }
 }
