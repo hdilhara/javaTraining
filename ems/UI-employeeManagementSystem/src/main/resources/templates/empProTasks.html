@@ -9,19 +9,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--    external css-->
-    <link rel="stylesheet" th:href="@{css/styleMe.css}">
+    <link rel="stylesheet" th:href="@{/css/styleMe.css}">
     <title>EMS</title>
 </head>
 <body>
 
 
 <div class="container">
-    <div class="text-center">
-        <a th:href="@{/ems}"> <img class="logoEmp" th:src="@{img/icon.png}"></a>
-        <h3><span class="badge badge-pill badge-dark">Employee Projects</span></h3>
-    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a th:href="@{/employee}"> <button type="button" class="btn btn-outline-dark" style="float:right; margin:25px;">GO BACK</button></button></a>
+        </div>
+        <div class="col-sm-8">
+            <div class="text-center">
+                <a th:href="@{/ems}"> <img class="logoEmp" th:src="@{/img/icon.png}"></a>
+                <h3><span class="badge badge-pill badge-dark">EMPLOYEE PROJECT TASK</span></h3>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
 
-    <div class="container">
+    </div>
 
 
         <table>

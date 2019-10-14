@@ -82,3 +82,11 @@ width: 5%;
         .taskbtn{
                 width:100%;
               }
+
+        .opCont {
+        padding:25px;
+
+        }
+        .form-control{
+        width:100%;
+        }
