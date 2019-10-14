@@ -59,7 +59,7 @@ public class EmployeeService {
         HttpHeaders header=new HttpHeaders();
         header.add("Authorization","bearer"+ GetToken.getToken());
         HttpEntity<List<Integer>> request=new HttpEntity<>(pids,header);
-        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8383/ems/projects/findAllBypid", HttpMethod.POST, request, new ParameterizedTypeReference<List<Project>>() {
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://dockerproject:8383/ems/projects/findAllBypid", HttpMethod.POST, request, new ParameterizedTypeReference<List<Project>>() {
         });
 
         projects=response.getBody();
@@ -79,7 +79,7 @@ public class EmployeeService {
         HttpHeaders header=new HttpHeaders();
         header.add("Authorization","bearer"+ GetToken.getToken());
         HttpEntity<List<Integer>> request=new HttpEntity<>(tids,header);
-        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8484/ems/employee/project/tasks", HttpMethod.POST, request, new ParameterizedTypeReference<List<Task>>() {
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://dockertask:8484/ems/employee/project/tasks", HttpMethod.POST, request, new ParameterizedTypeReference<List<Task>>() {
         });
 
         tasks=response.getBody();

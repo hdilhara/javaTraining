@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--    external css-->
+    <link rel="stylesheet" th:href="@{/css/styleMe.css}">
+    <title>EMS</title>
+</head>
+<body>
+
+<div class="container ">
+
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="/logout"> <button type="button" class="btn btn-outline-danger" style="float:right; margin:25px;">LOGOUT</button></button></a>
+        </div>
+        <div class="col-sm-8">
+            <div class="text-center">
+                <a th:href="@{/ems}"> <img class="logoEmp" th:src="@{/img/icon.png}"></a>
+                <h3><span class="badge badge-pill badge-dark">EMS</span></h3>
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+
+    </div>
+
+
+    <div class=" oper">
+        <div class="func" onmouseover="employee()" onmouseout="removeDetails()"><a th:href="@{/employee}"><img th:src="@{img/emp1.png}" ></a></div>
+        <div class="func" onmouseover="projects()" onmouseout="removeDetails()"><a th:href="@{/projects}"><img th:src="@{img/project.png}" ></a></div>
+        <div class="func" onmouseover="tasks()" onmouseout="removeDetails()"><a th:href="@{/tasks}"><img th:src="@{img/tasks.jpeg}" ></a></div>
+        <div sec:authorize="hasAuthority('MANAGER')" class="func" onmouseover="operations()" onmouseout="removeDetails()" ><a th:href="@{/operations}"><img th:src="@{img/opera.png}" ></a></div>
+    </div>
+
+    <div id="desc" class="text-center" style="margin-top:25px;">
+
+    </div>
+
+</div>
+
+<script>
+            function employee() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>EMPLOYEE</h3>";
+}
+function projects() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>PROJECT</h3>";
+}
+function tasks() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>TASK</h3>";
+}
+function operations() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>OPERATIONS</h3>";
+}
+function removeDetails() {
+    var y = document.getElementById("desc");   // Get the element with id="demo"
+y.innerHTML=" ";
+}
+        </script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

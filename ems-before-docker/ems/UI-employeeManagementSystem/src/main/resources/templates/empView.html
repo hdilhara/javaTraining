@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--    external css-->
+    <link rel="stylesheet" th:href="@{/css/styleMe.css}">
+    <title>EMS</title>
+</head>
+<body>
+
+<div class="text-center">
+    <a th:href="@{/employee}"> <button type="button" class="btn btn-outline-dark" style="float:right; margin:25px;">Go Back</button></button></a>
+</div>
+<div class="container">
+
+<!--    <span th:text="${emp.name}"></span>-->
+
+
+
+
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="empDetails col-sm-6 ">
+            <div class=" text-center"><img class=" logoEmp" th:src="@{/img/emp.png}">
+                <h3><span class="badge badge-pill badge-dark">EMPLOYEE DETAILS</span></h3>
+            </div>
+
+            <table id="empD">
+                <tr><td>ID</td><td><span th:text="${emp.id}"></span></td><td></td><td></td></tr>
+                <tr><td>NAME</td><td><span th:text="${emp.name}"></span></td><td></td><td></td></tr>
+                <tr><td>DESIGNATION</td><td><span th:text="${emp.resignation}"></span></td><td></td><td></td></tr>
+            </table>
+
+
+            <div class="text-center">   <!--************************** Button trigger modal ********************************-->
+                <form th:action="@{/employees/employee/projects/{eid}(eid=${emp.id})}">
+                <button type="submit" class="btn btn-outline-primary"  d style="margin-bottom: 20px;">
+                    PROJECTS
+                </button></div>
+            </form>
+    </div>
+
+
+
+
+
+
+<!--    <input id="myInput" type="text" value="Swag" />-->
+
+<!--    <script>-->
+<!--    var test = "test";-->
+<!--    document.getElementById("myInput").value = test;-->
+<!--</script>-->
+
+
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

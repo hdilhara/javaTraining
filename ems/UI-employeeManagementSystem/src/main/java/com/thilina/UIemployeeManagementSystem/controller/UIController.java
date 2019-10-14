@@ -52,7 +52,7 @@ public class UIController {
         HttpHeaders header=new HttpHeaders();/**httpenttiy we should  pass either header or body(hash map)  or both*/
         header.set("Authorization","Bearer "+token);
         HttpEntity<String> request=new HttpEntity<String>(header);
-        ResponseEntity<List<Employee>> response=restTemplate.exchange("http://localhost:8282/ems/employees", HttpMethod.GET, request, new ParameterizedTypeReference<List<Employee> >() {
+        ResponseEntity<List<Employee>> response=restTemplate.exchange("http://dockeremployee:8282/ems/employees", HttpMethod.GET, request, new ParameterizedTypeReference<List<Employee> >() {
         });
         List<Employee> employees=response.getBody();
 
@@ -76,7 +76,7 @@ public class UIController {
         mapVal.put("resignation",employee.getResignation());
 /**in this http enttity we pass both body(hash map) and header**/
         HttpEntity<HashMap<String ,String>> request=new HttpEntity<>(mapVal,header);
-        restTemplate.postForEntity("http://localhost:8282/ems/employees/employee/",request,String.class);
+        restTemplate.postForEntity("http://dockeremployee:8282/ems/employees/employee/",request,String.class);
 
         return "redirect:/employee";/**redirect to employee**/
     }
@@ -89,7 +89,7 @@ public class UIController {
         headers.add("Authorization","bearer"+token);
         HttpEntity<Employee> request=new HttpEntity<>(headers);
                 /**in here we dont get any response back - so we put here response type as String.class**/
-        ResponseEntity<Employee> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/"+id,HttpMethod.GET,request,Employee.class);
+        ResponseEntity<Employee> response=restTemplate.exchange("http://dockeremployee:8282/ems/employees/employee/"+id,HttpMethod.GET,request,Employee.class);
         Employee employee=response.getBody();
         model.addAttribute("emp",employee);
         return "empView";
@@ -102,7 +102,7 @@ public class UIController {
         header.add("Authorization","bearer"+token);
         RestTemplate restTemplate=new RestTemplate();
         HttpEntity<String > request=new HttpEntity<>(header);
-        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8383/ems/projects", HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://dockerproject:8383/ems/projects", HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
         });
         List<Project> projects=response.getBody();
         model.addAttribute("projects",projects);
@@ -116,7 +116,7 @@ public class UIController {
         String token=GetToken.getToken();
         header.add("Authorization","bearer"+token);
         HttpEntity<String> request=new HttpEntity<>(header);
-        ResponseEntity<Project> response=restTemplate.exchange("http://localhost:8383/ems/projects/project/"+id,HttpMethod.GET,request,Project.class);
+        ResponseEntity<Project> response=restTemplate.exchange("http://dockerproject:8383/ems/projects/project/"+id,HttpMethod.GET,request,Project.class);
         Project project=response.getBody();
         model.addAttribute("project",project);
 
@@ -135,7 +135,7 @@ public class UIController {
         mapVal.put("country",project.getCountry());
         mapVal.put("tech",project.getTech());
         HttpEntity<HashMap<String,String>> request=new HttpEntity<>(mapVal,header);
-        restTemplate.postForEntity("http://localhost:8383/ems/projects/project",request,String.class);
+        restTemplate.postForEntity("http://dockerproject:8383/ems/projects/project",request,String.class);
 
         return "redirect:/projects";
 
@@ -148,7 +148,7 @@ public class UIController {
         header.add("Authorization","bearer"+GetToken.getToken());
         HttpEntity<String> request=new HttpEntity<>(header);
         RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://dockertask:8484/ems/tasks", HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
         });
         List<Task> tasks=response.getBody();
         model.addAttribute("tasks",tasks);
@@ -160,7 +160,7 @@ public class UIController {
         header.add("Authorization","bearer"+GetToken.getToken());
         HttpEntity<Task> request=new HttpEntity<>(task,header);
         RestTemplate restTemplate=new RestTemplate();
-        restTemplate.exchange("http://localhost:8484/ems/tasks",HttpMethod.POST,request,String.class);
+        restTemplate.exchange("http://dockertask:8484/ems/tasks",HttpMethod.POST,request,String.class);
         return "redirect:/tasks";
     }
 
@@ -171,7 +171,7 @@ public class UIController {
         header.add("Authorization","bearer"+GetToken.getToken());
         HttpEntity<String> request=new HttpEntity<>(header);
         RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Project>> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/projects/" + eid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
+        ResponseEntity<List<Project>> response=restTemplate.exchange("http://dockeremployee:8282/ems/employees/employee/projects/" + eid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Project>>() {
         });
         projects=response.getBody();
         model.addAttribute("projects",projects);
@@ -187,7 +187,7 @@ public class UIController {
         header.add("Authorization","bearer"+GetToken.getToken());
         HttpEntity<String> request=new HttpEntity<>(header);
         RestTemplate restTemplate=new RestTemplate();
-        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/projects/tasks/"+ eid+"/"+pid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://dockeremployee:8282/ems/employees/employee/projects/tasks/"+ eid+"/"+pid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
         });
         tasks=response.getBody();
         model.addAttribute("tasks",tasks);
@@ -208,17 +208,17 @@ public class UIController {
         List<Task> tasks=new ArrayList<>();
         /**get all emploies**/
         HttpEntity<String> requestEmploies=new HttpEntity<String>(header);
-        ResponseEntity<List<Employee>> responseEmploies=restTemplate.exchange("http://localhost:8282/ems/employees", HttpMethod.GET, requestEmploies, new ParameterizedTypeReference<List<Employee> >() {
+        ResponseEntity<List<Employee>> responseEmploies=restTemplate.exchange("http://dockeremployee:8282/ems/employees", HttpMethod.GET, requestEmploies, new ParameterizedTypeReference<List<Employee> >() {
         });
 
         /**get all projects**/
         HttpEntity<String > requestProject=new HttpEntity<>(header);
-        ResponseEntity<List<Project>> responseProjects=restTemplate.exchange("http://localhost:8383/ems/projects", HttpMethod.GET, requestProject, new ParameterizedTypeReference<List<Project>>() {
+        ResponseEntity<List<Project>> responseProjects=restTemplate.exchange("http://dockerproject:8383/ems/projects", HttpMethod.GET, requestProject, new ParameterizedTypeReference<List<Project>>() {
         });
 
         /**get all tasks**/
         HttpEntity<String> requestTask=new HttpEntity<>(header);
-        ResponseEntity<List<Task>> responseTask=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, requestTask, new ParameterizedTypeReference<List<Task>>() {
+        ResponseEntity<List<Task>> responseTask=restTemplate.exchange("http://dockertask:8484/ems/tasks", HttpMethod.GET, requestTask, new ParameterizedTypeReference<List<Task>>() {
         });
 
         projects=responseProjects.getBody();
@@ -246,7 +246,7 @@ public class UIController {
             epTmapping.setTid(ept.getTids()[j]);
 
             HttpEntity<EPTmapping> request=new HttpEntity<>(epTmapping,header);
-            restTemplate.postForEntity("http://localhost:8282/ems/ept/map",request,String.class);
+            restTemplate.postForEntity("http://dockeremployee:8282/ems/ept/map",request,String.class);
 
         }
         return "redirect:/operations";

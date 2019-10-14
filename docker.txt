@@ -1,0 +1,127 @@
+$ sudo docker network create dockernetwork
+
+$ sudo docker run --name dockermysql -e MYSQL_ROOT_PASSWORD=virtusa@1234 --network="dockernetwork" mysql
+
+build images
+$ sudo docker build -t dockertask .
+
+run images
+$ sudo docker run --name dockeroauth -p 9191:9191 --network="dockernetwork" dockeroauth
+
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag dockeroauth hdilhara/ems:dockeroauth
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag dockeremployee hdilhara/ems:dockeremployee
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag dockerproject hdilhara/ems:dockerproject
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag dockerui hdilhara/ems:dockerui
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag dockertask hdilhara/ems:dockertask
+user@delegate-ThinkCentre-M710s:~$ sudo docker tag mysql hdilhara/ems:mysql
+user@delegate-ThinkCentre-M710s:~$ sudo docker images
+
+
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+hdilhara/ems           dockertask          60c0e08aa1e4        41 minutes ago      692MB
+dockertask             latest              60c0e08aa1e4        41 minutes ago      692MB
+hdilhara/ems           dockerui            52472f20ca85        43 minutes ago      673MB
+dockerui               latest              52472f20ca85        43 minutes ago      673MB
+hdilhara/ems           dockerproject       c84bcba4662c        44 minutes ago      692MB
+dockerproject          latest              c84bcba4662c        44 minutes ago      692MB
+hdilhara/ems           dockeremployee      1e57add6cee4        44 minutes ago      691MB
+dockeremployee         latest              1e57add6cee4        44 minutes ago      691MB
+hdilhara/ems           dockeroauth         64e9c7b6130d        44 minutes ago      671MB
+dockeroauth            latest              64e9c7b6130d        44 minutes ago      671MB
+spring-docker          latest              8d6290219ba1        2 weeks ago         505MB
+openjdk                8                   e8d00769c8a8        4 weeks ago         488MB
+mysql                  5.6                 95e0fc47b096        4 weeks ago         257MB
+hdilhara/ems           mysql               b8fd9553f1f0        4 weeks ago         445MB
+mysql                  latest              b8fd9553f1f0        4 weeks ago         445MB
+codelabs-httpd         latest              c310e9106ffd        2 months ago        154MB
+vineesha               latest              c310e9106ffd        2 months ago        154MB
+httpd                  2.4                 ee39f68eb241        3 months ago        154MB
+hello-world            latest              fce289e99eb9        9 months ago        1.84kB
+vulnerables/web-dvwa   latest              ab0d83586b6e        12 months ago       712MB
+java                   8                   d23bdf5b1b1b        2 years ago         643MB
+user@delegate-ThinkCentre-M710s:~$ sudo docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: hdilhara 
+Password: 
+WARNING! Your password will be stored unencrypted in /home/user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:mysql
+The push refers to repository [docker.io/hdilhara/ems]
+1cfb4d403fde: Mounted from library/mysql 
+e47b5971b1f1: Mounted from library/mysql 
+9ac6573d19b0: Mounted from library/mysql 
+3cd5c95dfa08: Mounted from library/mysql 
+05f26d9a462a: Mounted from library/mysql 
+9e88946b01ba: Mounted from library/mysql 
+7acae26d323c: Mounted from library/mysql 
+9a341d74c9b2: Mounted from library/mysql 
+5547ac6d39e8: Mounted from library/mysql 
+683d7a4130fe: Mounted from library/mysql 
+7288a4c980c6: Mounted from library/mysql 
+e9dc98463cd6: Mounted from library/mysql 
+mysql: digest: sha256:2e4114bdc9dd797549f6df0cffb5f6cb6354bef9d96223a5935b6b17aea03840 size: 2828
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:dockeroauth
+The push refers to repository [docker.io/hdilhara/ems]
+45138e9e68b3: Pushed 
+35c20f26d188: Mounted from library/java 
+c3fe59dd9556: Mounted from library/java 
+6ed1a81ba5b6: Mounted from library/java 
+a3483ce177ce: Mounted from library/java 
+ce6c8756685b: Mounted from library/java 
+30339f20ced0: Mounted from library/java 
+0eb22bfb707d: Mounted from library/java 
+a2ae92ffcd29: Mounted from library/java 
+dockeroauth: digest: sha256:b6cb38de6a93aa21649e4e4e35be788bda5926e75506ad32a301ccab357d61a7 size: 2212
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:dockerproject
+The push refers to repository [docker.io/hdilhara/ems]
+f21e2456938f: Pushed 
+35c20f26d188: Layer already exists 
+c3fe59dd9556: Layer already exists 
+6ed1a81ba5b6: Layer already exists 
+a3483ce177ce: Layer already exists 
+ce6c8756685b: Layer already exists 
+30339f20ced0: Layer already exists 
+0eb22bfb707d: Layer already exists 
+a2ae92ffcd29: Layer already exists 
+dockerproject: digest: sha256:b5604c975b0b3d0dae4adcc96b86d32dda06f52bb8710d747e92bbe9c9e32c4a size: 2212
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:dockertask
+The push refers to repository [docker.io/hdilhara/ems]
+fdab18270f65: Pushed 
+35c20f26d188: Layer already exists 
+c3fe59dd9556: Layer already exists 
+6ed1a81ba5b6: Layer already exists 
+a3483ce177ce: Layer already exists 
+ce6c8756685b: Layer already exists 
+30339f20ced0: Layer already exists 
+0eb22bfb707d: Layer already exists 
+a2ae92ffcd29: Layer already exists 
+dockertask: digest: sha256:b859dd0ad8201a42e40c25d9d4a1a9dd930c72ab0f538a4920eab17565bf35fb size: 2212
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:dockerui
+The push refers to repository [docker.io/hdilhara/ems]
+f68cf00830a7: Pushed 
+35c20f26d188: Layer already exists 
+c3fe59dd9556: Layer already exists 
+6ed1a81ba5b6: Layer already exists 
+a3483ce177ce: Layer already exists 
+ce6c8756685b: Layer already exists 
+30339f20ced0: Layer already exists 
+0eb22bfb707d: Layer already exists 
+a2ae92ffcd29: Layer already exists 
+dockerui: digest: sha256:2c56d3311ed11bf79277e22738d248e6bc913d6b568fc39448952ce764346da6 size: 2212
+user@delegate-ThinkCentre-M710s:~$ sudo docker push hdilhara/ems:dockeremployee
+The push refers to repository [docker.io/hdilhara/ems]
+14073b32de3b: Pushed 
+35c20f26d188: Layer already exists 
+c3fe59dd9556: Layer already exists 
+6ed1a81ba5b6: Layer already exists 
+a3483ce177ce: Layer already exists 
+ce6c8756685b: Layer already exists 
+30339f20ced0: Layer already exists 
+0eb22bfb707d: Layer already exists 
+a2ae92ffcd29: Layer already exists 
+dockeremployee: digest: sha256:88fa059276d00caf6144c74232082856bc985f87e3d52171cb36c12d84fcde4b size: 2212
+user@delegate-ThinkCentre-M710s:~$ 
+

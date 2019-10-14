@@ -4,9 +4,9 @@ security:
       client-id: web
       client-secret: webpass
       user-authorization-uri: http://localhost:9191/oauth/authorize
-      access-token-uri: http://localhost:9191/oauth/token
+      access-token-uri: http://dockeroauth:9191/oauth/token
     resource:
-      token-info-uri: http://localhost:9191/oauth/check_token
+      token-info-uri: http://dockeroauth:9191/oauth/check_token
 server:
   port: 8080
   servlet:
