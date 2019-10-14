@@ -30,20 +30,41 @@
     </div>
 
 
-    <div class="oper">
-        <div class="func"><a th:href="@{/employee}"><img th:src="@{img/emp1.png}" ></a></div>
-        <div class="func"><a th:href="@{/projects}"><img th:src="@{img/project.png}" ></a></div>
-        <div class="func"><a th:href="@{/tasks}"><img th:src="@{img/tasks.jpeg}" ></a></div>
-        <div class="func"><a th:href="@{/operations}"><img th:src="@{img/opera.png}" ></a></div>
+    <div class=" oper">
+        <div class="func" onmouseover="employee()" onmouseout="removeDetails()"><a th:href="@{/employee}"><img th:src="@{img/emp1.png}" ></a></div>
+        <div class="func" onmouseover="projects()" onmouseout="removeDetails()"><a th:href="@{/projects}"><img th:src="@{img/project.png}" ></a></div>
+        <div class="func" onmouseover="tasks()" onmouseout="removeDetails()"><a th:href="@{/tasks}"><img th:src="@{img/tasks.jpeg}" ></a></div>
+        <div class="func" onmouseover="operations()" onmouseout="removeDetails()"><a th:href="@{/operations}"><img th:src="@{img/opera.png}" ></a></div>
     </div>
 
-    <div>
+    <div id="desc" class="text-center" style="margin-top:25px;">
 
     </div>
 
 </div>
 
-
+<script>
+            function employee() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>EMPLOYEE</h3>";
+}
+function projects() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>PROJECT</h3>";
+}
+function tasks() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>TASK</h3>";
+}
+function operations() {
+                var x = document.getElementById("desc");   // Get the element with id="demo"
+x.innerHTML="<h3>OPERATIONS</h3>";
+}
+function removeDetails() {
+    var y = document.getElementById("desc");   // Get the element with id="demo"
+y.innerHTML=" ";
+}
+        </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
