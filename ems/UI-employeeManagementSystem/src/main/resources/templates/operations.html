@@ -15,38 +15,28 @@
 <body>
 
 
+
 <div class="container">
     <div class="text-center">
         <a th:href="@{/ems}"> <img class="logoEmp" th:src="@{img/icon.png}"></a>
-        <h3><span class="badge badge-pill badge-dark">Employee Projects</span></h3>
-    </div>
-
-    <div class="container">
-<table>
-    <thead>
-    <th>ID</th>
-    <th>Project Name</th>
-    <th>Country</th>
-    <th>Technology</th>
-    <th></th>
-    </thead>
-    <tbody>
-    <tr th:each="pro: ${projects}">
-        <td><span th:text="${pro.pid}"></span></td>
-        <td><span th:text="${pro.pname}"></span></td>
-        <td><span th:text="${pro.tech}"></span></td>
-        <td><span th:text="${pro.country}"></span></td>
-        <td class="text-center">
-            <a th:href="@{/ems/employee/project/tasks/1/1}"><button class="btn btn-outline-info">VIEW TASKS</button></a>
-<!--            {eid}(eid=${eid})/{pid}(pid=${pro.pid})}-->
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+        <h3><span class="badge badge-pill badge-dark">OPERATIONS</span></h3>
     </div>
 
 
+    <form th:action="@{/operations}" method="post">
+    <select>
+        <option th:each="emp: ${employees}" th:text="${emp.name}" th:value="${emp.id}"></option>
+    </select>
+    <select>
+        <option th:each="pro: ${projects}" th:text="${pro.pname}" th:value="${pro.pid}"></option>
+    </select>
+    <div th:each="task: ${tasks}">
+       <span th:text="${task.tname}"></span> <input type="checkbox" th:value="${task.tid}">
+    </div>
+    </form>
+    <button type="submit">Add Tasks</button>
+
+</div>
 
 
 <!-- Optional JavaScript -->

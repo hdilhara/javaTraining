@@ -22,4 +22,12 @@ public class TaskService {
         tasksRepo.findAll().forEach(tasks::add);
         return tasks;
     }
+    public List<Task> getAllTasksByid(List<Integer> tids){
+            List<Task> tasks=new ArrayList<>();
+            for (Integer i:tids){
+                tasks.add(tasksRepo.findById(i).get());
+            }
+            return tasks;
+        }
+
 }

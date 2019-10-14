@@ -1,6 +1,6 @@
 package com.thilina.UIemployeeManagementSystem.controller;
 
-import com.sun.deploy.net.HttpResponse;
+
 import com.thilina.UIemployeeManagementSystem.config.GetToken;
 import com.thilina.UIemployeeManagementSystem.dao.Employee;
 import com.thilina.UIemployeeManagementSystem.dao.Project;
@@ -177,6 +177,65 @@ public class UIController {
         });
         projects=response.getBody();
         model.addAttribute("projects",projects);
+        model.addAttribute("eid",eid);
         return "employeeProjects";
+    }
+
+    @RequestMapping(value = "/ems/employee/project/tasks/{eid}/{pid}",method = RequestMethod.GET)
+    public String getEmployeeProjectTasks(@PathVariable Integer eid,@PathVariable Integer pid, Model model){
+        List<Task> tasks=new ArrayList<>();
+        HttpHeaders header=new HttpHeaders();
+        List<Integer> tids=new ArrayList<>();
+        header.add("Authorization","bearer"+GetToken.getToken());
+        HttpEntity<String> request=new HttpEntity<>(header);
+        RestTemplate restTemplate=new RestTemplate();
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8282/ems/employees/employee/projects/tasks/"+ eid+"/"+pid, HttpMethod.GET, request, new ParameterizedTypeReference<List<Task>>() {
+        });
+        tasks=response.getBody();
+        model.addAttribute("tasks",tasks);
+        return "empProTasks";
+    }
+
+    /*****Operations**********/
+    @GetMapping("/operations")
+    public String getOperationPage(Model model){
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer "+GetToken.getToken());
+
+        RestTemplate restTemplate=new RestTemplate();
+
+
+        List<Project> projects=new ArrayList<>();
+        List<Employee> employees=new ArrayList<>();
+        List<Task> tasks=new ArrayList<>();
+        /**get all emploies**/
+        HttpEntity<String> requestEmploies=new HttpEntity<String>(header);
+        ResponseEntity<List<Employee>> responseEmploies=restTemplate.exchange("http://localhost:8282/ems/employees", HttpMethod.GET, requestEmploies, new ParameterizedTypeReference<List<Employee> >() {
+        });
+
+        /**get all projects**/
+        HttpEntity<String > requestProject=new HttpEntity<>(header);
+        ResponseEntity<List<Project>> responseProjects=restTemplate.exchange("http://localhost:8383/ems/projects", HttpMethod.GET, requestProject, new ParameterizedTypeReference<List<Project>>() {
+        });
+
+        /**get all tasks**/
+        HttpEntity<String> requestTask=new HttpEntity<>(header);
+        ResponseEntity<List<Task>> responseTask=restTemplate.exchange("http://localhost:8484/ems/tasks", HttpMethod.GET, requestTask, new ParameterizedTypeReference<List<Task>>() {
+        });
+
+        projects=responseProjects.getBody();
+        model.addAttribute("projects",projects);
+        employees=responseEmploies.getBody();
+        model.addAttribute("employees",employees);
+        tasks=responseTask.getBody();
+        model.addAttribute("tasks",tasks);
+        return "operations";
+    }
+
+    @RequestMapping(value = "/operations",method = RequestMethod.POST)
+    public String executeOperation(@ModelAttribute ){
+
+
+        return "redirect:/operations";
     }
 }

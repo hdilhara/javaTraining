@@ -1,9 +1,7 @@
 package com.thilina.employeeManagementSystem.services;
 
 import com.thilina.employeeManagementSystem.config.GetToken;
-import com.thilina.employeeManagementSystem.dao.EPTmapping;
-import com.thilina.employeeManagementSystem.dao.Employee;
-import com.thilina.employeeManagementSystem.dao.Project;
+import com.thilina.employeeManagementSystem.dao.*;
 
 import com.thilina.employeeManagementSystem.repository.EPTrepo;
 import com.thilina.employeeManagementSystem.repository.EmpRepo;
@@ -47,21 +45,7 @@ public class EmployeeService {
     }
 
     /*****mapping ****/
-//    public List<Projects> getEmployeeProjects(Integer eid){
-//        List<Projects> projects=new ArrayList<>();
-//        List<EPT> epts=eptRepo.findByeid(eid);
-//        List<Integer> pids=new ArrayList<>();
-//        for(EPT ept:epts){
-//            pids.add(ept.getPid());
-//        }
-//
-//        pids = pids.stream().distinct().collect(Collectors.toList());
-//        for(Integer pid:pids){
-//            projects.add(projectRepo.findById(pid).get());
-//
-//        }
-//        return projects;
-//    }
+
     public List<Project> getEmployeeProjects(Integer eid){
         List<Project> projects=new ArrayList<>();
         List<EPTmapping> epts=epTrepo.findByeid(eid);
@@ -82,4 +66,23 @@ public class EmployeeService {
     return projects;
     }
 
+    public List<Task> getEmployeeProjectsTasks(EidPid eidpid){
+        List<Task> tasks=new ArrayList<>();
+        List<EPTmapping> epts=epTrepo.findByEidAndPid(eidpid.getEid(),eidpid.getPid());
+        List<Integer> tids=new ArrayList<>();
+        for(EPTmapping e:epts){
+            tids.add(e.getTid());
+        }
+        tids=tids.stream().distinct().collect(Collectors.toList());
+
+        RestTemplate restTemplate=new RestTemplate();
+        HttpHeaders header=new HttpHeaders();
+        header.add("Authorization","bearer"+ GetToken.getToken());
+        HttpEntity<List<Integer>> request=new HttpEntity<>(tids,header);
+        ResponseEntity<List<Task>> response=restTemplate.exchange("http://localhost:8484/ems/employee/project/tasks", HttpMethod.POST, request, new ParameterizedTypeReference<List<Task>>() {
+        });
+
+        tasks=response.getBody();
+        return tasks;
+    }
 }

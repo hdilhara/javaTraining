@@ -22,30 +22,7 @@
     </div>
 
     <div class="container">
-        <table>
-            <thead>
-            <th>ID</th>
-            <th>Project Name</th>
-            <th>Country</th>
-            <th>Technology</th>
-            <th></th>
-            </thead>
-            <tbody>
-            <tr th:each="pro: ${projects}">
-                <td><span th:text="${pro.pid}"></span></td>
-                <td><span th:text="${pro.pname}"></span></td>
-                <td><span th:text="${pro.tech}"></span></td>
-                <td><span th:text="${pro.country}"></span></td>
-                <td class="text-center">
-                    <a th:href="@{/projects/project/{id}(id=${pro.pid})}"><button class="btn btn-outline-info">VIEW TASKS</button></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
 
-        <div class="text-center">
-            <h3><span class="badge badge-pill badge-dark">Tasks</span></h3>
-        </div>
 
         <table>
             <thead>

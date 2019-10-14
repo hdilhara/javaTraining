@@ -36,8 +36,7 @@ public class ProjectController {
 
     @RequestMapping(value = "/ems/projects/findAllBypid",method = RequestMethod.POST)
     public List<Project> findAllbyPid(@RequestBody List<Integer> pids){
-        System.out.println(pids);
-        return projectService.findAllByIds(pids);
+                return projectService.findAllByIds(pids);
     }
 //    @RequestMapping("/ems/pids")
 //    public List<Integer> getPids(){

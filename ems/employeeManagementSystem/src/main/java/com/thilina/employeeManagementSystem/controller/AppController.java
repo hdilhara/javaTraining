@@ -1,10 +1,11 @@
 package com.thilina.employeeManagementSystem.controller;
 
+import com.thilina.employeeManagementSystem.dao.EidPid;
 import com.thilina.employeeManagementSystem.dao.Employee;
 import com.thilina.employeeManagementSystem.dao.Project;
 
+import com.thilina.employeeManagementSystem.dao.Task;
 import com.thilina.employeeManagementSystem.services.EmployeeService;
-import javafx.concurrent.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,11 @@ public class AppController {
     @RequestMapping(value = "/ems/employees/employee/projects/{eid}",method = RequestMethod.GET)
     public List<Project> getEmployeeProjects(@PathVariable Integer eid) {
         return empService.getEmployeeProjects(eid);
+    }
+    @RequestMapping(value = "/ems/employees/employee/projects/tasks/{eid}/{pid}",method = RequestMethod.GET)
+    public List<Task> getEmployeeProjectsTasks(@PathVariable Integer eid, @PathVariable Integer pid) {
+        EidPid eidPid=new EidPid(eid,pid);
+        return empService.getEmployeeProjectsTasks(eidPid);
     }
 
 
